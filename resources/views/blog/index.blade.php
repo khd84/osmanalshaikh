@@ -7,8 +7,8 @@
 <h1 class=" text-6xl font-bold">جميع الموضوعات</h1>
 </div>
 @if (Auth::check())
-    <div>
-        <a class="bg-green-700 text-gray-100 py-4 px-5 rounded-lg font-bold uppercase text-l place-self-start" href="/blog/create">أنشئ موضوعاً جديداً</a>
+    <div class=" px-10">
+        <a class=" px-5 text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm py-2.5 text-center mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" href="/blog/create">أنشئ موضوعاً جديداً</a>
 
     </div>
 @endif

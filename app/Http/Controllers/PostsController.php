@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use illuminate\support\str;
 
 use App\Models\Post;
 
@@ -38,8 +39,18 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request ->validate([
+            'title'=>'required',
+            'description'=>'required',
+            'image'=>'required|mimes.jpg,png,jepg|max:5048',
+        ]);
+
+        $newimagename = uniqid() . '-'. $request -> title . '.' . $request->image -> extension();
+        $request -> image-> move(public_path('images') , $newimagename);
+       // dd($request);
+        $slug = Str::slug($request -> title,'-');
     }
+
 
     /**
      * Display the specified resource.
