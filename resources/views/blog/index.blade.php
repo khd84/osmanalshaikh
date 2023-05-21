@@ -3,10 +3,15 @@
 @section('content')
 
 <!--{{$posts}} -->
-<div class=" container sm:grid mx-auto p-5 border-b border-gray-300">
-    <a class="bg-gray-700 text-gray-100 py-4 px-5 rounded-lg font-bold uppercase text-l place-self-start" href="/blog/create">Add Psot</a>
-
+<div class=" container m-auto text-center pt-15 pb-5">
+<h1 class=" text-6xl font-bold">جميع الموضوعات</h1>
 </div>
+@if (Auth::check())
+    <div>
+        <a class="bg-green-700 text-gray-100 py-4 px-5 rounded-lg font-bold uppercase text-l place-self-start" href="/blog/create">أنشئ موضوعاً جديداً</a>
+
+    </div>
+@endif
 
 @foreach ($posts as $post )
     <div class=" container sm:grid  grid-cols-2 gap-15 mx-auto py-15 px-5 justify-between items-center border-b border-cool-gray-300">
