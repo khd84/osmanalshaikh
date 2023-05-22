@@ -1,5 +1,7 @@
 <footer class="bg-gray-900 py-15 mt-20">
 
+
+
     <div class="container mx-auto flex justify-between items-center px-6">
 
         <div>
@@ -16,6 +18,7 @@
                     </ul>
 
         </div>
+
         <div>
             <h3 class="font-bold text-white">Latest Posts</h3>
                 <ul class="pt-4 text-white">
@@ -26,9 +29,8 @@
                     <li class="pb-2 text-white">
                         <a class="hover:text-gray-600 transition duration-300" href="/">حين اصبح الدعامي وديعا واشتغل تجاة عدة</a></li>
 
-                </ul>
-
         </div>
 
     </div>
+
 </footer>

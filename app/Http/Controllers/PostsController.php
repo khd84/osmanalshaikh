@@ -39,16 +39,25 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        $request ->validate([
+        $request -> validate([
             'title'=>'required',
             'description'=>'required',
-            'image'=>'required|mimes.jpg,png,jepg|max:5048',
+            'image'=>'required|mimes:jpg,png,jepg|max:5048',
         ]);
-
-        $newimagename = uniqid() . '-'. $request -> title . '.' . $request->image -> extension();
+        $slug = Str::slug($request -> title,'-');
+        $newimagename = uniqid() . '-'. $slug . '.' . $request->image -> extension();
         $request -> image-> move(public_path('images') , $newimagename);
        // dd($request);
-        $slug = Str::slug($request -> title,'-');
+        Post::create(
+            ['title' => $request->input('title'),
+            'slug'=> $slug,
+            'description'=> $request->input('description'),
+            'image_path'=> $newimagename,
+            'user_id'=> auth()->user()->id]
+        );
+
+        return redirect('/blog');
+
     }
 
 
@@ -58,9 +67,10 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        //
+        return view ('blog.show')
+        ->with('post', Post::where('slug',$slug)->first());
     }
 
     /**
@@ -69,9 +79,10 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($slug)
     {
-        //
+        return view('blog.edit')
+        ->with('post', Post::where('slug',$slug)->first());
     }
 
     /**
@@ -81,9 +92,27 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $slug)
     {
-        //
+        $request -> validate([
+            'title'=>'required',
+            'description'=>'required',
+            'image'=>'required|mimes:jpg,png,jepg|max:5048',
+        ]);
+        $slug = Str::slug($request -> title,'-');
+        $newimagename = uniqid() . '-'. $slug . '.' . $request->image -> extension();
+        $request -> image-> move(public_path('images') , $newimagename);
+    //    // dd($request);
+        Post::where('slug',$slug)->update
+        (
+            ['title' => $request->input('title'),
+            'slug'=> $slug,
+            'description'=> $request->input('description'),
+            'image_path'=> $newimagename,
+            'user_id'=> auth()->user()->id]
+        );
+
+        return redirect('/blog/' . $slug)->with('message','تم التعديل علي الموضوع');
     }
 
     /**
@@ -92,8 +121,9 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($slug)
     {
-        //
+        Post::where('slug',$slug)->delete();
+        return redirect('/blog.')->with('message','تم حذف الموضوع بنجاح');
     }
 }

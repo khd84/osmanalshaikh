@@ -1,3 +1,5 @@
+
+
 @extends('layouts.app')
 
 @section('content')
@@ -13,10 +15,17 @@
     </div>
 @endif
 
+
 @foreach ($posts as $post )
     <div class=" container sm:grid  grid-cols-2 gap-15 mx-auto py-15 px-5 justify-between items-center border-b border-cool-gray-300">
         <div>
-            <img class=" object-cover" src="{{$post-> image_path}}" alt="">
+            @if(filter_var($post-> image_path,FILTER_VALIDATE_URL))
+                <img class=" object-cover" src=" {{$post-> image_path}}  " alt="">
+
+            @else
+                <img class=" object-cover" src="/images/{{$post-> image_path}}  " alt="">
+
+            @endif
         </div>
 
         <div>
@@ -25,7 +34,7 @@
             </h2>
             <span>
                 By : <span class=" text-gray-500 italic">{{$post->user->name}}</span>
-                On : <span class=" text-gray-500 italic">{{ date( 'd-m-Y h:i:s A' , $post->updated_at ) }}</span>
+                On : <span class=" text-gray-500 italic">{{  $post->updated_at->format('Y-m-d H:i:s') }}</span>
 
                 <p class="py-10 text-gray-500 text-sm leading-5 font-serif"> {{$post-> description}} </p>
 
