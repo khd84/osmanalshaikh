@@ -124,6 +124,6 @@ class PostsController extends Controller
     public function destroy($slug)
     {
         Post::where('slug',$slug)->delete();
-        return redirect('/blog.')->with('message','تم حذف الموضوع بنجاح');
+        return redirect('/blog')->with('message','تم حذف الموضوع بنجاح');
     }
 }

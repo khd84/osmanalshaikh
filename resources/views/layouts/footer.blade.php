@@ -17,18 +17,33 @@
                             <a class="hover:text-gray-600 transition duration-300" href="/register">Register</a></li>
                     </ul>
 
+
+
+
+
         </div>
 
         <div>
             <h3 class="font-bold text-white">Latest Posts</h3>
-                <ul class="pt-4 text-white">
+                {{-- <ul class="pt-4 text-white">
                     <li class="pb-2 text-white">
                         <a class="hover:text-gray-600 transition duration-300" href="/">في نهاية الحرب حميدتي يقابل حبيبته</a></li>
                     <li class="pb-2 text-white">
                         <a class="hover:text-gray-600 transition duration-300" href="/">الدعامة في دهاليز التأهيل</a></li>
                     <li class="pb-2 text-white">
                         <a class="hover:text-gray-600 transition duration-300" href="/">حين اصبح الدعامي وديعا واشتغل تجاة عدة</a></li>
-
+                        --}}
+                     @php
+                        $topTitles = \App\Models\Post::orderBy('title', 'asc')
+                                        ->limit(3)
+                                        ->pluck('title');
+                      @endphp
+   @dd($topTitles);
+                      <ol class="pt-4 text-white">
+                        @foreach ($topTitles as $title)
+                            <li class="pb-2 text-white >{{ $title }}</li>
+                        @endforeach
+                      </ol>
         </div>
 
     </div>
