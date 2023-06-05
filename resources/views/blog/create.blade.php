@@ -1,3 +1,11 @@
+
+
+
+
+
+
+
+
 @extends('layouts.app')
 
 @section('content')
@@ -22,7 +30,7 @@
 
 
 
-        <div class="w-full mb-4 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600">
+        {{-- <div class="w-full mb-4 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600">
             <div class="flex items-center justify-between px-3 py-2 border-b dark:border-gray-600">
                 <div class="flex flex-wrap items-center divide-gray-200 sm:divide-x dark:divide-gray-600">
                     <div class="flex items-center space-x-1 sm:pr-4">
@@ -81,7 +89,14 @@
                 name = "description"
                 ></textarea>
             </div>
-        </div>
+        </div> --}}
+               <div id="summernote">
+
+                <textarea name="description" id="summernote" cols="30" rows="10"
+                class="block w-full px-0 text-sm text-gray-800 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="Write an article..." required
+
+                ></textarea>
+               </div>
 
 
     <div class= " py-10">
@@ -99,7 +114,7 @@
             </label>
         </div>
 
-        <button type="submit" class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">ٍSubmit the post</button>
+        <button type="submit" class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Submit the post</button>
 </div>
 
 
