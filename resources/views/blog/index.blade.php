@@ -38,13 +38,19 @@
             <h2 class=" text-gray-700 font-bold text-4xl py-5 pt-0">
                 {{$post-> title}}
             </h2>
-            <span>
+            <span class=" pb-10">
                 By : <span class=" text-gray-500 italic">{{$post->user->name}}</span>
                 On : <span class=" text-gray-500 italic">{{  $post->updated_at->format('Y-m-d H:i:s') }}</span>
-                    <p class="py-10 text-gray-500 text-sm leading-5 font-serif"> {{Str::limit($post-> description, 1000 )}} </p>
-                    <a class="bg-gray-700 text-gray-100 py-4 px-5 rounded-lg font-bold uppercase text-l place-self-start" href="/blog/{{$post->slug}}">Read More</a>
+                    <p class="text-gray-500 text-sm leading-5 font-serif">{!! Str::limit($post-> description, 1000 ) !!} </p>
             </span>
+
+        <div class=" pt-15">
+            <a class="bg-gray-700 text-gray-100 py-4 px-5 rounded-lg font-bold uppercase text-l" href="/blog/{{$post->slug}}">مواصلة القراءة</a>
         </div>
+
+        </div>
+
+
 </div>
 @endforeach
 @endsection

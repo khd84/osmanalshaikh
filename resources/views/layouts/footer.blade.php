@@ -2,17 +2,17 @@
 <footer class="bg-gray-900 py-15 mt-20">
     <div class="container mx-auto flex justify-between items-center px-6">
 
-        <div class=" flex">
-                <h3 class="font-bold text-white">Pages</h3>
+        <div class=" flex mx-auto">
+                <h3 class="font-bold text-white inline-block font-serif">الصفحات</h3>
                     <ul class="pt-4 text-white">
                         <li class="pb-2 text-white">
-                            <a class="hover:text-gray-600 transition duration-300" href="/">Home</a></li>
+                            <a class="hover:text-gray-600 transition duration-300" href="/">الرئيسية</a></li>
                         <li class="pb-2 text-white">
-                            <a class="hover:text-gray-600 transition duration-300" href="/blog">Blog</a></li>
+                            <a class="hover:text-gray-600 transition duration-300" href="/blog">المقالات</a></li>
                         <li class="pb-2 text-white">
-                            <a class="hover:text-gray-600 transition duration-300" href="/login">Login</a></li>
+                            <a class="hover:text-gray-600 transition duration-300" href="/login">الدخول</a></li>
                         <li class="pb-2 text-white">
-                            <a class="hover:text-gray-600 transition duration-300" href="/register">Register</a></li>
+                            <a class="hover:text-gray-600 transition duration-300" href="/register">التسجيل</a></li>
                     </ul>
         </div>
 
@@ -81,15 +81,7 @@
 
 
         <div>
-            <h3 class="font-bold text-white">Latest Posts</h3>
-                {{-- <ul class="pt-4 text-white">
-                    <li class="pb-2 text-white">
-                        <a class="hover:text-gray-600 transition duration-300" href="/">في نهاية الحرب حميدتي يقابل حبيبته</a></li>
-                    <li class="pb-2 text-white">
-                        <a class="hover:text-gray-600 transition duration-300" href="/">الدعامة في دهاليز التأهيل</a></li>
-                    <li class="pb-2 text-white">
-                        <a class="hover:text-gray-600 transition duration-300" href="/">{{ $tit }}</a></li>
-                        --}}
+            <h3 class="font-bold text-white">المقالات الحديثة</h3>
                      @php
                         $topTitles = \App\Models\Post::orderBy('title', 'asc')
                                         ->limit(3)

@@ -27,9 +27,10 @@
                             • في العام 2020 طبعة ثانية عن دار نرتقي للطباعة والنشر.
                             • في العام 2021 صدرت له المجموعة القصصية (الخروج من بوابة الجسد) عن دار الأجنحة للطباعة والنشر والتوزيع.
                         </p>
-                        <a class="bg-gray-700 text-gray-100 py-4 px-5 rounded-lg font-bold uppercase text-l place-self-start" href="/">Read More</a>
 
      </div>
+     <a class="bg-gray-700 text-gray-100 py-4 px-5 rounded-lg font-bold uppercase text-l place-self-start" href="/">Read More</a>
+
 </div>
 
 <!-- Blog Categories -->

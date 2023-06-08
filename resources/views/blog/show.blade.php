@@ -36,7 +36,7 @@
         @endif
     </div>
     <div class=" text-l text-gray-700 py-8 leading-6">
-            {{$post->description}}
+         {!! $post->description !!}
     </div>
 
 
