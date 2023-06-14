@@ -10,18 +10,27 @@
 <!-- Article 0 -->
 <div class="container sm:grid-cols-2 gap-15 mx-auto py-15 flex justify-between items-center">
         <div class=" mx-2 md:mx-0">
-            <img class="sm:rounded-lg" src="https://picsum.photos/900/1000?grayscale" alt="">
+            <img class="sm:rounded-lg" src="/images/646c9b13ad5e2-aathman-alshykh-khdr-alnor.jpg" alt="">
         </div>
         <div class=" flex-col items-stretch justify-center m-10 sm:m-0">
-            <h2 class="font-bold text-gray-700 text-4xl uppercase"> Address Of Article Here</h2>
+            <h2 class="font-bold text-gray-700 text-4xl uppercase"> عن الكاتب</h2>
                         <p class=" font-bold text-gray-600 text-xl pt-2">
-                       this is breif of the article
+                       عثمان الشيخ خضر النور
                         </p>
                         <p class=" py-5 text-gray-500 text-sm leading-5">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            كاتب وقاص سوداني، تخرّج من كلية الهندسة ويعمل بالهندسة حالياً، يمارس الكتابة بصورة غير راتبة لعدد من الصحف السودانية والعربية والملاحق الثقافية المختلفة والمدونات الإلكترونية.
+
+                            حاز على عدد من الجوائز في القصة القصيرة داخل السودان كجائزة الطيب صالح للقصة القصيرة في دورتين في العام 2017 والعام 2020، جائزة نيرڨانا للأدب القصصي في العام 2019، جائزة أفربيا للشباب العربي والافريقي عام 2018. وعدد من الجوائز خارج السودان مثل مسابقة قصص على الهواء التي تنظّمها مجلة العربي الكويتية بالتعاون مع إذاعة مونتي كارلو الدولية في العام 2018 ، وجائزة أحمد بوزفور بدولة المغرب في العام 2018، وجائزة مجلة فن السرد في العام 2019.
+
+                            صدر له:
+                             • في العام 2019 كتاب (تلصُّص - حفريات في ذاكرة مهترئة-) في طبعة أولى عن دار الريم للطباعة والنشر.
+                            • في العام 2020 طبعة ثانية عن دار نرتقي للطباعة والنشر.
+                            • في العام 2021 صدرت له المجموعة القصصية (الخروج من بوابة الجسد) عن دار الأجنحة للطباعة والنشر والتوزيع.
                         </p>
-                        <a class="bg-gray-700 text-gray-100 py-4 px-5 rounded-lg font-bold uppercase text-l place-self-start" href="/">Read More</a>
-        </div>
+
+     </div>
+     <a class="bg-gray-700 text-gray-100 py-4 px-5 rounded-lg font-bold uppercase text-l place-self-start" href="/">Read More</a>
+
 </div>
 
 <!-- Blog Categories -->

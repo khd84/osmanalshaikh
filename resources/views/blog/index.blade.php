@@ -1,95 +1,56 @@
 @extends('layouts.app')
-
 @section('content')
-
-<div class=" container m-auto text-center py-10">
-
-    <h1 class=" text-6xl font-bold">All Posts</h1>
+@if (session()->has('message'))
+<div id="alert-additional-content-1" class="p-4 mb-4 text-blue-800 border border-blue-300 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400 dark:border-blue-800" role="alert">
+    <div class="flex items-center">
+      <svg aria-hidden="true" class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+      <span class="sr-only">Info</span>
+      <h3 class="text-lg font-medium">تأكيد !!</h3>
+    </div>
+    <div class="mt-2 mb-4 text-sm">
+        {{session()->get('message')}}
+    </div>
+  </div>
+  @endif
+<!--{{$posts}} -->
+<div class=" container m-auto text-center pt-15 pb-5">
+<h1 class=" text-6xl font-bold">جميع الموضوعات</h1>
 </div>
+@if (Auth::check())
+    <div class=" px-10">
+        <a class=" px-5 text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm py-2.5 text-center mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" href="/blog/create">أنشئ موضوعاً جديداً</a>
 
-<div class=" container sm:grid  grid-cols-2 gap-15 mx-auto py-15 px-5 justify-between items-center border-b border-cool-gray-300">
+    </div>
+@endif
+@foreach ($posts as $post )
+    <div class=" container sm:grid  grid-cols-2 gap-15 mx-auto py-15 px-5 justify-between items-center border-b border-cool-gray-300">
         <div>
-            <img class=" object-cover" src="https://picsum.photos/id/343/960/620" alt="">
+            @if(filter_var($post-> image_path,FILTER_VALIDATE_URL))
+                <img class=" object-cover" src=" {{$post-> image_path}}  " alt="">
+
+            @else
+                <img class=" object-cover" src="/images/{{$post-> image_path}}  " alt="">
+
+            @endif
         </div>
 
         <div>
             <h2 class=" text-gray-700 font-bold text-4xl py-5 pt-0">
-                How To Talk Like Commonist
+                {{$post-> title}}
             </h2>
-            <span>
-                By : <span class=" text-gray-500 italic">Othman Alshaikh</span>
-                    <p class="py-10 text-gray-500 text-sm leading-5">
-                        بل مدة ليست بطويلة ڪُنت في دار الأجنحة للطباعة والنشر ،لزيارة صديقي أنس وإقتناء بعض الڪتب والتسامر ڪالعادة .وبعد أخذ ما أريد طلبت منه أن يرشح لي كتاب على ذوقه لأضيفه لمحصلت مالدي ، وقبل إجابته دلف الينا الاستاذ متوڪل زروق وبادلنا أطراف الحديث فيما يتعلق بالڪتب ،وبينما نحن كذلك وقعت عيني على (تلصص) فسألته مارأيك بكتابات عثمان شيخ فأنا لم أقرئ له من قبل ، أجاب أنصح به ،لديه أسلوب جميل في الكتابة ،فأخذته وهممت بعد وقت بالإنصراف.
-
-                    </p>
-
-                    <a class="bg-gray-700 text-gray-100 py-4 px-5 rounded-lg font-bold uppercase text-l place-self-start" href="/">Read More</a>
+            <span class=" pb-10">
+                By : <span class=" text-gray-500 italic">{{$post->user->name}}</span>
+                On : <span class=" text-gray-500 italic">{{  $post->updated_at->format('Y-m-d H:i:s') }}</span>
+                    <p class="text-gray-500 text-sm leading-5 font-serif">{!! Str::limit($post-> description, 1000 ) !!} </p>
             </span>
+
+        <div class=" pt-15">
+            <a class="bg-gray-700 text-gray-100 py-4 px-5 rounded-lg font-bold uppercase text-l" href="/blog/{{$post->slug}}">مواصلة القراءة</a>
         </div>
+
+        </div>
+
+
 </div>
-
-<div class=" container sm:grid  grid-cols-2 gap-15 mx-auto py-15 px-5 justify-between items-center border-b border-cool-gray-300">
-    <div>
-        <img class=" object-cover" src="https://picsum.photos/id/89/960/620" alt="">
-    </div>
-
-    <div>
-        <h2 class=" text-gray-700 font-bold text-4xl py-5 md:pt-0">
-            How To Talk Like Commonist
-        </h2>
-        <span>
-            By : <span class=" text-gray-500 italic">Othman Alshaikh</span>
-                <p class="py-10 text-gray-500 text-sm leading-5">
-                    بل مدة ليست بطويلة ڪُنت في دار الأجنحة للطباعة والنشر ،لزيارة صديقي أنس وإقتناء بعض الڪتب والتسامر ڪالعادة .وبعد أخذ ما أريد طلبت منه أن يرشح لي كتاب على ذوقه لأضيفه لمحصلت مالدي ، وقبل إجابته دلف الينا الاستاذ متوڪل زروق وبادلنا أطراف الحديث فيما يتعلق بالڪتب ،وبينما نحن كذلك وقعت عيني على (تلصص) فسألته مارأيك بكتابات عثمان شيخ فأنا لم أقرئ له من قبل ، أجاب أنصح به ،لديه أسلوب جميل في الكتابة ،فأخذته وهممت بعد وقت بالإنصراف.
-
-                </p>
-
-                <a class="bg-gray-700 text-gray-100 py-4 px-5 rounded-lg font-bold uppercase text-l place-self-start" href="/">Read More</a>
-        </span>
-    </div>
-</div>
-
-<div class=" container sm:grid  grid-cols-2 gap-15 mx-auto py-15 px-5 justify-between items-center border-b border-cool-gray-300">
-    <div>
-        <img class=" object-cover" src="https://picsum.photos/id/55/960/620" alt="">
-    </div>
-
-    <div>
-        <h2 class=" text-gray-700 font-bold text-4xl py-5 md:pt-0">
-            How To Talk Like Commonist
-        </h2>
-        <span>
-            By : <span class=" text-gray-500 italic">Othman Alshaikh</span>
-                <p class="py-10 text-gray-500 text-sm leading-5">
-                    بل مدة ليست بطويلة ڪُنت في دار الأجنحة للطباعة والنشر ،لزيارة صديقي أنس وإقتناء بعض الڪتب والتسامر ڪالعادة .وبعد أخذ ما أريد طلبت منه أن يرشح لي كتاب على ذوقه لأضيفه لمحصلت مالدي ، وقبل إجابته دلف الينا الاستاذ متوڪل زروق وبادلنا أطراف الحديث فيما يتعلق بالڪتب ،وبينما نحن كذلك وقعت عيني على (تلصص) فسألته مارأيك بكتابات عثمان شيخ فأنا لم أقرئ له من قبل ، أجاب أنصح به ،لديه أسلوب جميل في الكتابة ،فأخذته وهممت بعد وقت بالإنصراف.
-
-                </p>
-
-                <a class="bg-gray-700 text-gray-100 py-4 px-5 rounded-lg font-bold uppercase text-l place-self-start" href="/">Read More</a>
-        </span>
-    </div>
-</div>
-
-<div class=" container sm:grid  grid-cols-2 gap-15 mx-auto py-15 px-5 justify-between items-center border-b border-cool-gray-300">
-    <div>
-        <img class=" object-cover" src="https://picsum.photos/id/100/960/620" alt="">
-    </div>
-
-    <div>
-        <h2 class=" text-gray-700 font-bold text-4xl py-5 md:pt-0">
-            How To Talk Like Commonist
-        </h2>
-        <span>
-            By : <span class=" text-gray-500 italic">Othman Alshaikh</span>
-                <p class="py-10 text-gray-500 text-sm leading-5">
-                    بل مدة ليست بطويلة ڪُنت في دار الأجنحة للطباعة والنشر ،لزيارة صديقي أنس وإقتناء بعض الڪتب والتسامر ڪالعادة .وبعد أخذ ما أريد طلبت منه أن يرشح لي كتاب على ذوقه لأضيفه لمحصلت مالدي ، وقبل إجابته دلف الينا الاستاذ متوڪل زروق وبادلنا أطراف الحديث فيما يتعلق بالڪتب ،وبينما نحن كذلك وقعت عيني على (تلصص) فسألته مارأيك بكتابات عثمان شيخ فأنا لم أقرئ له من قبل ، أجاب أنصح به ،لديه أسلوب جميل في الكتابة ،فأخذته وهممت بعد وقت بالإنصراف.
-
-                </p>
-
-                <a class="bg-gray-700 text-gray-100 py-4 px-5 rounded-lg font-bold uppercase text-l place-self-start" href="/">Read More</a>
-        </span>
-    </div>
-</div>
-
-
+@endforeach
 @endsection
